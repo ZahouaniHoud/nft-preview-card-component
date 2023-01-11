@@ -86,7 +86,7 @@ body {
 }
 
 main {
-  min-height: 150vh;
+  min-height: 100vh;
   display: grid;
   place-content: center;
   margin-inline: 1rem;
@@ -120,7 +120,8 @@ main {
   height: 100%;
   border-radius: 3rem;
   z-index: -1;
-  box-shadow: 0rem 2rem 0.4rem 1rem hsl(217, 55%, 10%);
+  box-shadow: 0rem 2rem 0.4rem 1rem hsl(217, 55%, 10%),
+    0rem 2rem 0.4rem 3rem hsla(217, 55%, 10%, 0.4);
 }
 
 .card__img {
