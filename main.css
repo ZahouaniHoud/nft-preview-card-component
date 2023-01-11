@@ -1,0 +1,295 @@
+/* CSS reset */
+
+/* https://www.joshwcomeau.com/css/custom-css-reset/#the-css-reset-1 */
+
+/*
+  1. Use a more-intuitive box-sizing model.
+*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/*
+  2. Remove default margin
+*/
+* {
+  margin: 0;
+}
+
+/*
+  3. Allow percentage-based heights in the application
+*/
+html,
+body {
+  height: 100vh;
+}
+
+/*
+  Typographic tweaks!
+  4. Add accessible line-height
+  5. Improve text rendering
+*/
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/*
+  6. Improve media defaults
+*/
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/*
+  8. Avoid text overflows
+*/
+p,
+h1 {
+  overflow-wrap: break-word;
+}
+
+/* Custom properties */
+
+:root {
+  --ff-base: "Outfit", sans-serif;
+
+  --fw-Light: 300;
+  --fw-regular: 400;
+  --fw-semiBold: 600;
+
+  --clr-primary: hsl(215, 51%, 70%);
+  --clr-secondary: hsl(178, 100%, 50%);
+  --clr-secondary-opacity: hsla(178, 100%, 50%, 0.5);
+
+  --clr-neutral-1000: hsl(217, 54%, 11%);
+  --clr-neutral-800: hsl(216, 50%, 16%);
+  --clr-neutral-500: hsl(215, 32%, 27%);
+  --clr-neutral-100: hsl(0, 0%, 100%);
+}
+
+/* General styling */
+
+body {
+  font-family: var(--ff-base);
+  font-weight: var(--fw-Light);
+  font-size: 1.125rem;
+  color: var(--clr-primary);
+  background-color: var(--clr-neutral-1000);
+}
+
+main {
+  min-height: 150vh;
+  display: grid;
+  place-content: center;
+  margin-inline: 1rem;
+}
+
+/* Utilities */
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Card styles */
+
+.card {
+  background-color: var(--clr-neutral-800);
+  padding: 1.5rem;
+  border-radius: 1rem;
+  max-width: 328px;
+  position: relative;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 3rem;
+  z-index: -1;
+  box-shadow: 0rem 2rem 0.4rem 1rem hsl(217, 55%, 10%);
+}
+
+.card__img {
+  border-radius: 0.6rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.card__img:hover::before {
+  content: "";
+  background-image: url(./images/icon-view.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  height: 100%;
+  background-color: var(--clr-secondary-opacity);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.card__content {
+  padding: 1.3rem 0 0;
+  display: grid;
+  gap: 0.8rem;
+}
+
+.card__title {
+  font-weight: var(--fw-semiBold);
+  color: var(--clr-neutral-100);
+  font-size: 1.25rem;
+  letter-spacing: 1px;
+}
+
+.card__title:hover {
+  color: var(--clr-secondary);
+}
+
+.card__desc {
+  font-size: 1rem;
+  margin-bottom: 0.3rem;
+}
+
+.card__info {
+  justify-content: space-between;
+}
+
+.card__amount {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  color: var(--clr-secondary);
+  font-weight: var(--fw-semiBold);
+  letter-spacing: 0.5px;
+}
+
+.card__amount[data-icon="ethereum-amount"]::before {
+  content: "";
+  background-image: url(./images/icon-ethereum.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 11px;
+  height: 18px;
+}
+
+.card__due {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: var(--fw-regular);
+  letter-spacing: 0.3px;
+}
+
+.card__due[data-icon="time-left"]::before {
+  content: "";
+  background-image: url(./images/icon-clock.svg);
+  width: 17px;
+  height: 17px;
+}
+
+.separator {
+  width: 100%;
+  height: 1px;
+  background-color: var(--clr-primary);
+}
+
+.card__user {
+  margin-top: 0.3rem;
+}
+
+.card__user__avatar {
+  width: 11.3%;
+  border: 1px solid var(--clr-neutral-100);
+  border-radius: 50%;
+}
+
+.card__user__name {
+  font-size: 0.9rem;
+  letter-spacing: 0.4px;
+}
+
+.card__user__name a {
+  text-decoration: none;
+  color: var(--clr-neutral-100);
+}
+
+.card__user__name a:is(:hover, :focus) {
+  color: var(--clr-secondary);
+}
+
+.attribution {
+  background-color: var(--clr-neutral-800);
+  width: 100%;
+  text-align: center;
+  padding: 0.8rem;
+  font-size: 0.9rem;
+}
+
+.attribution a {
+  text-decoration: none;
+  color: var(--clr-neutral-100);
+  font-weight: var(--fw-bold);
+}
+
+.attribution a:is(:hover, :focus) {
+  opacity: 0.75;
+  color: var(--clr-secondary);
+  text-decoration: underline;
+}
+
+/* Media Queries */
+
+@media (min-width: 768px) {
+  .card {
+    max-width: 350px;
+  }
+
+  .card__title {
+    font-size: 1.4rem;
+    letter-spacing: -0.2px;
+  }
+
+  .card__desc {
+    font-size: 1.1rem;
+    font-weight: var(--fw-regular);
+    letter-spacing: 0.2px;
+    margin-bottom: 0.6rem;
+  }
+
+  .card__info {
+    margin-bottom: 0.5rem;
+  }
+
+  .card__amount {
+    font-size: 1rem;
+    letter-spacing: 0.2px;
+  }
+
+  .card__due {
+    font-size: 1rem;
+  }
+
+  .card__user {
+    margin: 0.2rem 0 0.45rem;
+  }
+
+  .card__user__name {
+    letter-spacing: 0.8px;
+  }
+}
